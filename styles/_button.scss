@@ -1,0 +1,24 @@
+.button {
+    width: 100%;
+    margin-left: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #00cc2d;
+    padding: 12px 24px;
+    border: none;
+    &.mobile {
+        display: none;
+    }
+
+    @media (max-width: 788px) {
+        &.mobile {
+            display: block;
+        }
+        & {
+            display: none;
+        }
+    }
+}
