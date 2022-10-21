@@ -7,6 +7,7 @@ import { Product } from "../components/product";
 
 import { mocksData } from "../mocks/sushi";
 import { Offers } from "../components/offers";
+import { Banner } from "../components/banner";
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +22,8 @@ const Home: NextPage = () => {
       <Product mocksData={mocksData} title={"Суши"} />
       <Product mocksData={mocksData} title={"Ролы"} />
       <Product mocksData={mocksData} title={"Сеты"} />
-      <Offers />
+      {/* <Offers /> */}
+      <Banner />
       <Product mocksData={mocksData} title={"Закуски"} />
       <Product mocksData={mocksData} title={"Напитки"} />
     </div>
