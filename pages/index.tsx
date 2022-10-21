@@ -4,9 +4,9 @@ import Head from "next/head";
 import { Header } from "../components/header";
 import { Menu } from "../components/menu";
 import { Product } from "../components/product";
-import { Banner } from "../components/banner";
 
 import { mocksData } from "../mocks/sushi";
+import { Offers } from "../components/offers";
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       <Product mocksData={mocksData} title={"Суши"} />
       <Product mocksData={mocksData} title={"Ролы"} />
       <Product mocksData={mocksData} title={"Сеты"} />
-      <Banner />
+      <Offers />
       <Product mocksData={mocksData} title={"Закуски"} />
       <Product mocksData={mocksData} title={"Напитки"} />
     </div>

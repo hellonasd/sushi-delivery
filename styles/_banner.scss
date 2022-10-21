@@ -1,0 +1,108 @@
+.banner {
+    // .banner__wrapper
+
+    &__wrapper {
+        background: #ffffff;
+        border-radius: 24px;
+        display: flex;
+        justify-content: space-between;
+        height: 424px;
+    }
+
+    // .banner__left
+
+    &__left {
+        margin-left: 98px;
+    }
+
+    // .banner__title
+
+    &__title {
+        margin-top: 68px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 54px;
+        line-height: 65px;
+        color: #1d1d1f;
+        max-width: 400px;
+        margin-bottom: 16px;
+    }
+
+    // .banner__sub-title
+
+    &__sub-title {
+        max-width: 350px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 28px;
+
+        color: #1d1d1f;
+    }
+
+    // .banner__add-btn
+
+    &__add-btn {
+    }
+
+    &__btn-mobile {
+        display: none;
+    }
+
+    &__btn-decstop {
+        display: inline-block;
+    }
+
+    &__btn {
+        display: inline-block;
+        max-width: 127px;
+        margin-right: 24px;
+    }
+
+    // .banner__price
+
+    &__img {
+    }
+
+    &__price {
+        display: inline-block;
+        color: #1d1d1f;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 32px;
+        margin-top: 34px;
+    }
+
+    // .banner__currency
+
+    &__currency {
+        font-weight: 700;
+        font-size: 27px;
+        line-height: 32px;
+        color: #686870;
+    }
+
+    // .banner__right
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: relative;
+        top: -189px;
+    }
+
+    // .banner__offer
+
+    &__offer {
+        background: #ff6633;
+        border-radius: 500px 0px 140px;
+        color: #ffffff;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+        padding: 24px 34px 24px 46px;
+    }
+}

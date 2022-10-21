@@ -9,16 +9,20 @@
     color: #00cc2d;
     padding: 12px 24px;
     border: none;
-    &.mobile {
+    &__mobile {
         display: none;
     }
 
     @media (max-width: 788px) {
-        &.mobile {
-            display: block;
-        }
-        & {
+        &__decstop {
             display: none;
         }
+        &__mobile {
+            display: block;
+        }
     }
+}
+
+.button.cl {
+    background-color: #f5f5f7;
 }

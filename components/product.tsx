@@ -17,8 +17,7 @@ export const Product: React.FC<Iprops> = ({ mocksData, title }) => {
           <div className="product__wrapper">
             <h3 className="product__title">{title}</h3>
             <div className="product__btn">
-              <Button title={"смотреть все"} />
-              <Button cl="mobile" title={"смотреть все позиции"} />
+              <Button title={"смотреть все"} st={"смотреть все позиции"} />
             </div>
             {mocksData.map((card) => {
               return <SushiCard key={card.id} card={card} />;
