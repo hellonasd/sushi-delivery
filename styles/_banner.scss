@@ -1,19 +1,28 @@
 .banner {
+    width: 100%;
     &__inner {
-        height: 630px;
+        // width: 1190px;
+        height: 550px;
         display: flex;
         align-items: flex-end;
+        justify-content: center;
     }
 
     &__wrapper {
+        width: 1150px;
         display: flex;
         justify-content: space-between;
         height: 450px;
-        width: 100%;
+        // width: 100%;
         background-color: #ffffff;
         border-radius: 24px;
     }
-
+    &__group {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-top: 34px;
+    }
     &__left {
         display: flex;
         flex-direction: column;
@@ -30,7 +39,7 @@
     }
 
     &__img {
-        width: 916px;
+        width: 500px;
         height: 536px;
         position: relative;
         left: -70px;
@@ -43,19 +52,20 @@
         font-size: 54px;
         line-height: 65px;
         color: #1d1d1f;
-        max-width: 400px;
+        max-width: 250px;
         margin-bottom: 16px;
+        word-wrap: break-word;
     }
 
     // .banner__sub-title
 
     &__sub-title {
-        max-width: 350px;
+        max-width: 250px;
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
         line-height: 28px;
-
+        word-wrap: break-word;
         color: #1d1d1f;
     }
 
@@ -67,22 +77,14 @@
         display: inline-block;
     }
 
-    &__btn {
-        display: inline-block;
-        max-width: 127px;
-        margin-right: 24px;
-    }
-
     // .banner__price
 
     &__price {
-        display: inline-block;
         color: #1d1d1f;
         font-style: normal;
         font-weight: 700;
         font-size: 40px;
         line-height: 32px;
-        margin-top: 34px;
     }
 
     // .banner__currency

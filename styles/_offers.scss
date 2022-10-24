@@ -1,5 +1,33 @@
 .offers {
     &__wrapper {
         display: flex;
+
+        transition: transform 0.5s ease-in-out;
+    }
+
+    &__wrapper.remove {
+        transition: transform 0s;
+    }
+    &__line {
+        overflow: hidden;
+        width: 1576px;
+        position: relative;
+    }
+
+    &__btns {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    &__btn-right,
+    &__btn-left {
+        background-color: rgba(39, 39, 39, 0.05);
+        border-radius: 12px;
+        width: 75px;
+        height: 162px;
+        border: none;
     }
 }

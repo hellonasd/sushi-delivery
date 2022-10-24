@@ -6,8 +6,11 @@ import { Menu } from "../components/menu";
 import { Product } from "../components/product";
 
 import { mocksData } from "../mocks/sushi";
-import { Offers } from "../components/offers";
+
 import { Banner } from "../components/banner";
+import { Slider } from "../components/Slider";
+import { Slides } from "../components/Slides";
+import { Arrow } from "../components/arrow";
 
 const Home: NextPage = () => {
   return (
@@ -22,8 +25,17 @@ const Home: NextPage = () => {
       <Product mocksData={mocksData} title={"Суши"} />
       <Product mocksData={mocksData} title={"Ролы"} />
       <Product mocksData={mocksData} title={"Сеты"} />
-      {/* <Offers /> */}
-      <Banner />
+      <Slider />
+      {/* <Banner
+        banner={{
+          id: 1,
+          img: "/loc.png",
+          ingredients: "asddddddddddddddddd",
+          price: 200,
+          title: "locccccccccccccccccccc",
+        }}
+      />
+      <Arrow /> */}
       <Product mocksData={mocksData} title={"Закуски"} />
       <Product mocksData={mocksData} title={"Напитки"} />
     </div>

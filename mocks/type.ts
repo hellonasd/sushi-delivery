@@ -15,3 +15,11 @@ export interface Imoks {
     lactoseFree?: string;
   };
 }
+
+export interface Islides {
+  id: number;
+  title: string;
+  ingredients: string;
+  price: number;
+  img: string;
+}

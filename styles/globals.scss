@@ -6,6 +6,9 @@
 @import "./button.scss";
 @import "./banner.scss";
 @import "./offers.scss";
+@import "./dots.scss";
+@import "./arrow.scss";
+@import "./slider.scss";
 
 html,
 body {
@@ -36,7 +39,7 @@ a {
 }
 
 .container {
-  max-width: 1576px;
+  max-width: 1260px;
   padding: 0 15px;
   margin: 0 auto;
 }

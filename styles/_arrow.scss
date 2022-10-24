@@ -1,0 +1,25 @@
+.arrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 12;
+    width: 99.5%;
+    left: 5px;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    &__left,
+    &__right {
+        background: rgba(39, 39, 39, 0.05);
+        border-radius: 12px;
+        width: 75px;
+        height: 162px;
+        border: none;
+        cursor: pointer;
+    }
+
+    &__img-left {
+        transform: rotate(180deg);
+    }
+}
