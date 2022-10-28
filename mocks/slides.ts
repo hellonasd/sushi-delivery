@@ -43,4 +43,11 @@ export const slidesMock: Islides[] = [
     price: 200,
     img: "/loc.png",
   },
+  {
+    id: 7,
+    title: "asd7",
+    ingredients: "asdasdasdasdsadasda",
+    price: 200,
+    img: "/loc.png",
+  },
 ];
