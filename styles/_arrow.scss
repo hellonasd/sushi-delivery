@@ -1,11 +1,11 @@
 .arrow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
     position: absolute;
     width: 99.5%;
     left: 5px;
-    top: 50%;
+    top: 45%;
     transform: translate(0, -50%);
 
     &__left,
@@ -15,7 +15,15 @@
         width: 75px;
         height: 162px;
         border: none;
+        position: absolute;
         cursor: pointer;
+    }
+
+    &__right {
+        right: 0px;
+    }
+    &__left {
+        left: 0px;
     }
 
     &__img-left {

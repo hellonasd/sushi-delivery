@@ -2,7 +2,10 @@
     // .card__wrapper
     background: #ffffff;
     border-radius: 12px;
-    max-width: 370px;
+    max-width: 100%;
+    @media (max-width: 764px) {
+        max-width: 390px;
+    }
     &__wrapper {
         padding: 24px;
         height: 100%;

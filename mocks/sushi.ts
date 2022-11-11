@@ -1,6 +1,6 @@
 import type { Imoks } from "./type";
 
-enum info {
+export enum info {
   HOT = "/hot.svg",
   VEGETARIAN = "/vegan.svg",
   LACTOSEFREE = "/lactose.svg",
@@ -21,9 +21,15 @@ export const mocksData: Imoks[] = [
     ingredients:
       "Нори, рис, японский майонез, бальзамик, трюфельная сальса, кунжутное масло",
     info: {
-      hot: info.HOT,
-      vegatarian: info.VEGETARIAN,
-      lactoseFree: info.LACTOSEFREE,
+      hot: {
+        icon: info.HOT,
+      },
+      vegatarian: {
+        icon: info.VEGETARIAN,
+      },
+      lactoseFree: {
+        icon: info.LACTOSEFREE,
+      },
     },
 
     status: {
@@ -52,7 +58,9 @@ export const mocksData: Imoks[] = [
     ingredients:
       "Нори, рис, японский майонез, бальзамик, трюфельная сальса, кунжутное масло",
     info: {
-      hot: info.HOT,
+      hot: {
+        icon: info.HOT,
+      },
     },
 
     status: {
@@ -92,9 +100,15 @@ export const mocksData: Imoks[] = [
     ingredients:
       "Нори, рис, японский майонез, бальзамик, трюфельная сальса, кунжутное масло",
     info: {
-      hot: info.HOT,
-      vegatarian: info.VEGETARIAN,
-      lactoseFree: info.LACTOSEFREE,
+      hot: {
+        icon: info.HOT,
+      },
+      vegatarian: {
+        icon: info.VEGETARIAN,
+      },
+      lactoseFree: {
+        icon: info.LACTOSEFREE,
+      },
     },
 
     status: {
@@ -111,9 +125,15 @@ export const mocksData: Imoks[] = [
     ingredients:
       "Нори, рис, японский майонез, бальзамик, трюфельная сальса, кунжутное масло",
     info: {
-      hot: info.HOT,
-      vegatarian: info.VEGETARIAN,
-      lactoseFree: info.LACTOSEFREE,
+      hot: {
+        icon: info.HOT,
+      },
+      vegatarian: {
+        icon: info.VEGETARIAN,
+      },
+      lactoseFree: {
+        icon: info.LACTOSEFREE,
+      },
     },
 
     status: {
@@ -130,9 +150,15 @@ export const mocksData: Imoks[] = [
     ingredients:
       "Нори, рис, японский майонез, бальзамик, трюфельная сальса, кунжутное масло",
     info: {
-      hot: info.HOT,
-      vegatarian: info.VEGETARIAN,
-      lactoseFree: info.LACTOSEFREE,
+      hot: {
+        icon: info.HOT,
+      },
+      vegatarian: {
+        icon: info.VEGETARIAN,
+      },
+      lactoseFree: {
+        icon: info.LACTOSEFREE,
+      },
     },
 
     status: {

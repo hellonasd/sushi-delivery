@@ -5,14 +5,23 @@ export interface Imoks {
   weight: number;
   ingredients: string;
   price: number;
-  status: {
+  status?: {
     new?: string;
     hit?: string;
   };
-  info: {
-    hot?: string;
-    vegatarian?: string;
-    lactoseFree?: string;
+  info?: {
+    hot?: {
+      icon?: string;
+      name?: "Острое";
+    };
+    vegatarian?: {
+      icon?: string;
+      name?: "Вегетарианские";
+    };
+    lactoseFree?: {
+      icon?: string;
+      name?: "Безлактозные";
+    };
   };
 }
 
@@ -22,4 +31,8 @@ export interface Islides {
   ingredients: string;
   price: number;
   img: string;
+}
+
+export interface Irolls extends Imoks {
+  keyWord: string;
 }

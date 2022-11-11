@@ -1,0 +1,59 @@
+.filter-price {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    border: none;
+    background-color: transparent;
+    padding: 12px 16px;
+    gap: 11px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__list {
+        list-style: none;
+        visibility: hidden;
+        opacity: 0;
+        transition: visability 0s, opacity 0.5s;
+    }
+
+    &__list--open {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+    &__item {
+        margin-bottom: 10px;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(78, 77, 77);
+            color: white;
+        }
+        &:active {
+            background-color: rgb(78, 39, 39);
+        }
+    }
+    &__btn {
+        display: flex;
+        justify-content: space-between;
+        background-color: transparent;
+        gap: 11px;
+        border: 1px solid transparent;
+        padding: 12px 16px;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            border: 1px solid gray;
+        }
+    }
+
+    &__arrow--up {
+        transform: rotate(180deg);
+    }
+}

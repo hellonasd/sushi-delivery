@@ -1,0 +1,17 @@
+.rolls {
+    &__category {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+    }
+    &__additives {
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        gap: 15px;
+    }
+    &__additives--active {
+        border: 1px solid #432332;
+    }
+}

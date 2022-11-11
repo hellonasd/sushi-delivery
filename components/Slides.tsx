@@ -52,6 +52,10 @@ export const Slides = ({
   };
 
   const mouseUp = () => {
+    if (!currentMove) {
+      window.removeEventListener("pointermove", moveTouch);
+      return;
+    }
     if (currentIndex === 1 && ref.current) {
       ref.current.style.transform = `translateX(0px)`;
     }
@@ -67,7 +71,7 @@ export const Slides = ({
     if (currentMove < 20 && currentIndex !== len) {
       slide(1, "next", "btn");
     }
-
+    setCurrentMove(0);
     window.removeEventListener("pointermove", moveTouch);
   };
   return (

@@ -64,10 +64,12 @@ export const Menu: React.FC<IMenu> = ({ open }) => {
           onPointerUp={up}
         >
           <li className="menu__item">
-            <a>
-              <img src="/rol.svg" alt="" className="menu__img" />
-              <p className="menu__name">Роллы</p>
-            </a>
+            <Link href="/rolls">
+              <a>
+                <img src="/rol.svg" alt="" className="menu__img" />
+                <p className="menu__name">Роллы</p>
+              </a>
+            </Link>
           </li>
 
           <li className="menu__item">
