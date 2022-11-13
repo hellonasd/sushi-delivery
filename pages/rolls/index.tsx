@@ -14,6 +14,7 @@ import { rollsMock } from "../../mocks/rolls";
 import { filterRolls } from "../../utils/filterRolls";
 import { f } from "../../utils/filter";
 import { mocksData } from "../../mocks/sushi";
+import { Ingredients } from "../../components/Ingredients";
 
 interface IFilter {
   category?: string;
@@ -57,10 +58,8 @@ function Rolls() {
 
   React.useEffect(() => {
     if (Object.values(filters).length > 0) {
-      console.log("fff", filters);
       setItems(f(filters, rollsMock));
     }
-    console.log("items", items);
   }, [filters]);
 
   return (
@@ -74,6 +73,7 @@ function Rolls() {
         {/* <Additives /> */}
         <div className="rolls__additives">
           <AdditivesBtn additive={additive} />
+          <Ingredients />
         </div>
         <Product mocksData={items} showBtn={false} />
       </div>
