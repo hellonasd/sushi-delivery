@@ -5,6 +5,10 @@ interface Iingredinets {
   name: string;
 }
 
+interface Iprops {
+  pickIngredients: (name: string) => void;
+}
+
 const ingredients: Iingredinets[] = [
   {
     icon: "/ingredients/salmon.png",
@@ -44,8 +48,19 @@ const ingredients: Iingredinets[] = [
   },
 ];
 
-export const Ingredients = () => {
+export const Ingredients = ({ pickIngredients }: Iprops) => {
   const [hidden, setHidden] = React.useState(true);
+  const [item, setItem] = React.useState<{ [key: number]: string }>({});
+  const pick = (i: number, name: string) => {
+    let ingredient: { [k: number]: string } = {};
+    ingredient[i] = name;
+
+    setItem({ ...item, ...ingredient });
+  };
+
+  const clearIngredients = () => {
+    setItem({});
+  };
   return (
     <div className="ingredients">
       <div className="ingredients__wrapper">
@@ -71,7 +86,9 @@ export const Ingredients = () => {
           <header className="ingredients__header">
             <h3 className="ingredients__title">Ингредиенты</h3>
             <div className="ingredients__btns">
-              <button className="ingredients__clear">Сбросить все</button>
+              <button className="ingredients__clear" onClick={clearIngredients}>
+                Сбросить все
+              </button>
               <button
                 onClick={() => setHidden(true)}
                 className="ingredients__close"
@@ -83,7 +100,16 @@ export const Ingredients = () => {
           <ul className="ingredients__list">
             {ingredients.map((ing, i) => {
               return (
-                <li key={ing.name} className="ingredients__item">
+                <li
+                  onClick={() => {
+                    pick(i, ing.name);
+                    pickIngredients(ing.name);
+                  }}
+                  key={ing.name}
+                  className={`ingredients__item ${
+                    item[i] === ing.name ? "ingredients__item--pick" : ""
+                  }`}
+                >
                   <img src={ing.icon} alt="" className="ingredients__icon" />
                   <span className="ingredients__name">{ing.name}</span>
                 </li>

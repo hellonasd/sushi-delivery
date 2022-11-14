@@ -11,9 +11,8 @@ import { Product } from "../../components/product";
 
 import { rollsMock } from "../../mocks/rolls";
 
-import { filterRolls } from "../../utils/filterRolls";
 import { f } from "../../utils/filter";
-import { mocksData } from "../../mocks/sushi";
+
 import { Ingredients } from "../../components/Ingredients";
 
 interface IFilter {
@@ -29,7 +28,6 @@ function Rolls() {
       ...filters,
       category: c,
     });
-    // setItems(filterRolls(rollsMock, c));
   };
 
   const changeFilterPrice = (c: string) => {
@@ -41,19 +39,14 @@ function Rolls() {
   };
 
   const additive = (c: string) => {
-    console.log(c);
     setFilters({
       ...filters,
       additive: c,
     });
-    // setItems(
-    //   rollsMock.filter((r) => {
-    //     switch (c) {
-    //       case r.info?.hot?.name:
-    //         return r;
-    //     }
-    //   })
-    // );
+  };
+
+  const pickIngredients = (name: string) => {
+    console.log("name", name);
   };
 
   React.useEffect(() => {
@@ -73,7 +66,7 @@ function Rolls() {
         {/* <Additives /> */}
         <div className="rolls__additives">
           <AdditivesBtn additive={additive} />
-          <Ingredients />
+          <Ingredients pickIngredients={pickIngredients} />
         </div>
         <Product mocksData={items} showBtn={false} />
       </div>
