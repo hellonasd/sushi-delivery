@@ -19,31 +19,39 @@ const btn: btn[] = [
 export const AdditivesBtn = ({ additive }: Iprops) => {
   const [active, setActive] = React.useState(0);
   const [clicked, setClicked] = React.useState(false);
+
+  const changeAdditive = (name: string, id: number) => {
+    if (active !== id) {
+      additive(name);
+      setActive(id);
+      setClicked(true);
+      return;
+    }
+    if (active === id && clicked) {
+      additive("");
+      setActive(-1);
+      setClicked(false);
+    }
+  };
+
   return (
     <>
-      {btn.map((b, i) => {
-        return (
-          <button
-            key={b.name}
-            onClick={() => {
-              if (!clicked) {
-                additive(b.name);
-              } else {
-                additive("");
-              }
-
-              setActive(b.id);
-              setClicked(!clicked);
-            }}
-            className={`additivesbtn ${
-              active === i + 1 && clicked ? "additivesbtn--active" : ""
-            }`}
-          >
-            <img src={b.src} alt="" className="additivesbtn__img" />
-            <span className="additivesbtn__name">{b.name}</span>
-          </button>
-        );
-      })}
+      <div className="additives">
+        {btn.map((b, i) => {
+          return (
+            <button
+              key={b.name}
+              onClick={() => changeAdditive(b.name, b.id)}
+              className={`additives__btn ${
+                active === i + 1 ? "additives__btn--active" : ""
+              }`}
+            >
+              <img src={b.src} alt="" className="additives__img" />
+              <span className="additives__name">{b.name}</span>
+            </button>
+          );
+        })}
+      </div>
     </>
   );
 };

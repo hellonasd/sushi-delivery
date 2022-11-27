@@ -1,4 +1,15 @@
 .rolls {
+    &__wrapper {
+        @media (max-width: 952px) {
+            display: none;
+        }
+    }
+
+    &__filters {
+        @media (min-width: 952px) {
+            display: none;
+        }
+    }
     &__category {
         display: flex;
         justify-content: space-between;
@@ -15,5 +26,19 @@
     }
     &__additives--active {
         border: 1px solid #432332;
+    }
+    &__mobile-btn {
+        display: flex;
+        align-items: center;
+        padding: 0px 15px;
+        @media (min-width: 952px) {
+            display: none;
+        }
+    }
+}
+
+.test {
+    @media (min-width: 952px) {
+        display: none;
     }
 }

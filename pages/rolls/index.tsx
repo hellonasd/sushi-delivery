@@ -1,5 +1,4 @@
-import { info } from "console";
-import React, { ReactPropTypes, useCallback } from "react";
+import React from "react";
 
 import { AdditivesBtn } from "../../components/additivesBtn";
 import { BreadCrumbs } from "../../components/breadCrumbs";
@@ -11,18 +10,25 @@ import { Product } from "../../components/product";
 
 import { rollsMock } from "../../mocks/rolls";
 
-import { f } from "../../utils/filter";
-
 import { Ingredients } from "../../components/Ingredients";
+import { check } from "../../utils/check";
+import { Filters } from "../../components/filters";
 
 interface IFilter {
-  category?: string;
-  additive?: string;
+  category: string;
+  additive: string;
+  ingredients: string;
 }
 
 function Rolls() {
   const [items, setItems] = React.useState(rollsMock);
-  const [filters, setFilters] = React.useState<IFilter>({});
+  const [filters, setFilters] = React.useState<IFilter>({
+    ingredients: "",
+    category: "Все",
+    additive: "",
+  });
+  const [filterMenuIsOpen, setFilterMenuIsOpen] = React.useState(false);
+
   const changeCategory = (c: string) => {
     setFilters({
       ...filters,
@@ -45,29 +51,59 @@ function Rolls() {
     });
   };
 
-  const pickIngredients = (name: string) => {
-    console.log("name", name);
+  const pickIngredients = (name: { i: number; name: string }) => {
+    let ingredients = [...Object.values(name)].join(" ").toLocaleLowerCase();
+
+    setFilters({
+      ...filters,
+      ingredients,
+    });
   };
 
   React.useEffect(() => {
-    if (Object.values(filters).length > 0) {
-      setItems(f(filters, rollsMock));
-    }
+    setItems(check({ filters, rollsMock }));
   }, [filters]);
 
   return (
     <div className="rolls">
       <div className="container">
         <BreadCrumbs />
-        <div className="rolls__category">
-          <Category changeCategory={changeCategory} />
+
+        <div className="rolls__wrapper">
+          <div className="rolls__category">
+            <Category changeCategory={changeCategory} />
+            <FilterPrice changeFilterPrice={changeFilterPrice} />
+          </div>
+          <div className="rolls__additives">
+            <AdditivesBtn additive={additive} />
+            <Ingredients pickIngredients={pickIngredients} />
+          </div>
+        </div>
+
+        {filterMenuIsOpen && (
+          <div className="rolls__filters">
+            <Filters closeFilter={() => setFilterMenuIsOpen(!filterMenuIsOpen)}>
+              <div className="rolls__category">
+                <Category changeCategory={changeCategory} />
+              </div>
+              <div className="rolls__additives">
+                <AdditivesBtn additive={additive} />
+                <Ingredients pickIngredients={pickIngredients} />
+              </div>
+            </Filters>
+          </div>
+        )}
+
+        <div className="rolls__mobile-btn">
+          <button
+            onClick={() => setFilterMenuIsOpen(!filterMenuIsOpen)}
+            className="rolls__filter-btn"
+          >
+            Фильтры
+          </button>
           <FilterPrice changeFilterPrice={changeFilterPrice} />
         </div>
-        {/* <Additives /> */}
-        <div className="rolls__additives">
-          <AdditivesBtn additive={additive} />
-          <Ingredients pickIngredients={pickIngredients} />
-        </div>
+
         <Product mocksData={items} showBtn={false} />
       </div>
     </div>

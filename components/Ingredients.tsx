@@ -6,7 +6,7 @@ interface Iingredinets {
 }
 
 interface Iprops {
-  pickIngredients: (name: string) => void;
+  pickIngredients: (name: any) => void;
 }
 
 const ingredients: Iingredinets[] = [
@@ -51,24 +51,43 @@ const ingredients: Iingredinets[] = [
 export const Ingredients = ({ pickIngredients }: Iprops) => {
   const [hidden, setHidden] = React.useState(true);
   const [item, setItem] = React.useState<{ [key: number]: string }>({});
+  const ref = React.useRef<{ [k: number]: string }>({});
   const pick = (i: number, name: string) => {
-    let ingredient: { [k: number]: string } = {};
-    ingredient[i] = name;
-
-    setItem({ ...item, ...ingredient });
+    const x: { [k: number]: string } = {};
+    x[i] = name;
+    if (i in ref.current && i in item) {
+      delete ref.current[i];
+      delete item[i];
+      setItem({ ...item });
+      pickIngredients(ref.current);
+      return;
+    }
+    ref.current[i] = name;
+    pickIngredients(ref.current);
+    setItem({ ...item, ...x });
   };
 
   const clearIngredients = () => {
     setItem({});
+    pickIngredients({});
+    ref.current = {};
   };
   return (
     <div className="ingredients">
       <div className="ingredients__wrapper">
         <div className="ingredients__prev">
           <ul className="ingredients__items">
-            {ingredients.slice(0, 3).map((ing) => {
+            {ingredients.slice(0, 3).map((ing, i) => {
               return (
-                <li key={ing.name} className="ingredients__view">
+                <li
+                  onClick={() => {
+                    pick(i, ing.name);
+                  }}
+                  key={ing.name}
+                  className={`ingredients__item ${
+                    item[i] === ing.name ? "ingredients__item--pick" : ""
+                  }`}
+                >
                   <img src={ing.icon} alt="" className="ingredients__icon" />
                   <span className="ingredients__name">{ing.name}</span>
                 </li>
@@ -79,6 +98,7 @@ export const Ingredients = ({ pickIngredients }: Iprops) => {
             onClick={() => setHidden(false)}
             className="ingredients__open-menu"
           >
+            <span className="ingredients__btn-name">Фильтры</span>
             <span className="ingredients__rect"></span>
           </button>
         </div>
@@ -103,7 +123,6 @@ export const Ingredients = ({ pickIngredients }: Iprops) => {
                 <li
                   onClick={() => {
                     pick(i, ing.name);
-                    pickIngredients(ing.name);
                   }}
                   key={ing.name}
                   className={`ingredients__item ${

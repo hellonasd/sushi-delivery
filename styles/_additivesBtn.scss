@@ -1,12 +1,17 @@
-.additivesbtn {
-    background-color: #fff;
-    padding: 18.17px;
-    border: 1px solid transparent;
-    border-radius: 12px;
+.additives {
     display: flex;
     align-items: center;
-    gap: 20px;
-    &--active {
-        border: 1px solid red;
+    gap: 8px;
+    &__btn {
+        background-color: #fff;
+        padding: 18.17px;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        &--active {
+            border: 1px solid red;
+        }
     }
 }

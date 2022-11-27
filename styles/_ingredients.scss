@@ -22,6 +22,9 @@
         display: flex;
         align-items: center;
         gap: 9px;
+        @media (max-width: 952px) {
+            display: none;
+        }
     }
 
     // .ingredients__item
@@ -52,10 +55,16 @@
     // .ingredients__open-menu
 
     &__open-menu {
-        padding: 21px 18px 37px 18px;
+        display: flex;
+        gap: 9px;
+        padding: 21px 18px 37px;
         background: #ffffff;
         border-radius: 12px;
         border: none;
+        @media (max-width: 952px) {
+            display: none;
+            // padding: 21px 18px 21px;
+        }
     }
 
     // .ingredients__rect
@@ -155,6 +164,13 @@
         justify-content: flex-start;
         padding-top: 24px;
         gap: 16px;
+    }
+
+    &__btn-name {
+        display: block;
+        @media (min-width: 952px) {
+            display: none;
+        }
     }
     &__item {
         display: flex;
