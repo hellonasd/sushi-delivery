@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { AdditivesBtn } from "../../components/additivesBtn";
 import { BreadCrumbs } from "../../components/breadCrumbs";
@@ -27,6 +27,7 @@ function Rolls() {
     category: "Все",
     additive: "",
   });
+
   const [filterMenuIsOpen, setFilterMenuIsOpen] = React.useState(false);
 
   const changeCategory = (c: string) => {
@@ -51,12 +52,10 @@ function Rolls() {
     });
   };
 
-  const pickIngredients = (name: { i: number; name: string }) => {
-    let ingredients = [...Object.values(name)].join(" ").toLocaleLowerCase();
-
+  const pickIngredients = (name: string) => {
     setFilters({
       ...filters,
-      ingredients,
+      ingredients: name,
     });
   };
 
@@ -71,12 +70,18 @@ function Rolls() {
 
         <div className="rolls__wrapper">
           <div className="rolls__category">
-            <Category changeCategory={changeCategory} />
+            <Category
+              changeCategory={changeCategory}
+              categoryName={filters.category}
+            />
             <FilterPrice changeFilterPrice={changeFilterPrice} />
           </div>
           <div className="rolls__additives">
-            <AdditivesBtn additive={additive} />
-            <Ingredients pickIngredients={pickIngredients} />
+            <AdditivesBtn additive={additive} pick={filters.additive} />
+            <Ingredients
+              pickIngredients={pickIngredients}
+              ingredien={filters.ingredients}
+            />
           </div>
         </div>
 
@@ -84,12 +89,20 @@ function Rolls() {
           <div className="rolls__filters">
             <Filters closeFilter={() => setFilterMenuIsOpen(!filterMenuIsOpen)}>
               <div className="rolls__category">
-                <Category changeCategory={changeCategory} />
+                <Category
+                  changeCategory={changeCategory}
+                  categoryName={filters.category}
+                />
               </div>
               <div className="rolls__additives">
-                <AdditivesBtn additive={additive} />
-                <Ingredients pickIngredients={pickIngredients} />
+                <AdditivesBtn additive={additive} pick={filters.additive} />
               </div>
+
+              <Ingredients
+                pickIngredients={pickIngredients}
+                mobile={filterMenuIsOpen}
+                ingredien={filters.ingredients}
+              />
             </Filters>
           </div>
         )}

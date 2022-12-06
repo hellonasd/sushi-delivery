@@ -7,6 +7,7 @@ interface Ilist {
 
 interface Iprops {
   changeCategory: (c: string) => void;
+  categoryName: string;
 }
 
 const list: Ilist[] = [
@@ -36,9 +37,7 @@ const list: Ilist[] = [
   },
 ];
 
-export const Category = ({ changeCategory }: Iprops) => {
-  const [activeItem, setactiveItem] = React.useState(1);
-
+export const Category = ({ changeCategory, categoryName }: Iprops) => {
   return (
     <div className="category">
       <div className="category__wrapper">
@@ -46,13 +45,10 @@ export const Category = ({ changeCategory }: Iprops) => {
           {list.map((category, i) => {
             return (
               <li
-                onClick={() => {
-                  setactiveItem(i + 1);
-                  changeCategory(category.name);
-                }}
+                onClick={() => changeCategory(category.name)}
                 key={category.id}
                 className={`category__item ${
-                  activeItem === category.id ? "category__item--active" : ""
+                  categoryName === category.name ? "category__item--active" : ""
                 }`}
               >
                 {category.name}

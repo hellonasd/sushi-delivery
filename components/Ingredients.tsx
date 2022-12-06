@@ -6,7 +6,9 @@ interface Iingredinets {
 }
 
 interface Iprops {
-  pickIngredients: (name: any) => void;
+  pickIngredients: (name: string) => void;
+  mobile?: boolean;
+  ingredien: string;
 }
 
 const ingredients: Iingredinets[] = [
@@ -48,51 +50,63 @@ const ingredients: Iingredinets[] = [
   },
 ];
 
-export const Ingredients = ({ pickIngredients }: Iprops) => {
+export const Ingredients = ({ pickIngredients, mobile, ingredien }: Iprops) => {
   const [hidden, setHidden] = React.useState(true);
-  const [item, setItem] = React.useState<{ [key: number]: string }>({});
-  const ref = React.useRef<{ [k: number]: string }>({});
+
   const pick = (i: number, name: string) => {
-    const x: { [k: number]: string } = {};
-    x[i] = name;
-    if (i in ref.current && i in item) {
-      delete ref.current[i];
-      delete item[i];
-      setItem({ ...item });
-      pickIngredients(ref.current);
-      return;
+    const nameIngredient = name.toLowerCase();
+    const index = ingredien.indexOf(nameIngredient);
+
+    if (ingredien && index >= 0) {
+      const str = ingredien
+        .split(nameIngredient)
+        .join(" ")
+        .replace(/^ +| +$|( ) +/g, "$1");
+      pickIngredients(str);
+    } else if (ingredien.length) {
+      pickIngredients(`${ingredien} ${nameIngredient}`);
+    } else {
+      pickIngredients(nameIngredient);
     }
-    ref.current[i] = name;
-    pickIngredients(ref.current);
-    setItem({ ...item, ...x });
   };
 
   const clearIngredients = () => {
-    setItem({});
-    pickIngredients({});
-    ref.current = {};
+    pickIngredients("");
   };
+
+  const classActive = (name: string): boolean => {
+    if (!ingredien.length) {
+      return false;
+    } else if (ingredien.indexOf(name.toLocaleLowerCase()) >= 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  console.log("ingredien", ingredien);
   return (
     <div className="ingredients">
       <div className="ingredients__wrapper">
         <div className="ingredients__prev">
           <ul className="ingredients__items">
-            {ingredients.slice(0, 3).map((ing, i) => {
-              return (
-                <li
-                  onClick={() => {
-                    pick(i, ing.name);
-                  }}
-                  key={ing.name}
-                  className={`ingredients__item ${
-                    item[i] === ing.name ? "ingredients__item--pick" : ""
-                  }`}
-                >
-                  <img src={ing.icon} alt="" className="ingredients__icon" />
-                  <span className="ingredients__name">{ing.name}</span>
-                </li>
-              );
-            })}
+            {!mobile &&
+              ingredients.slice(0, 3).map((ing, i) => {
+                return (
+                  <li
+                    onClick={() => {
+                      pick(i, ing.name);
+                    }}
+                    key={ing.name}
+                    className={`ingredients__item ${
+                      classActive(ing.name) ? "ingredients__item--pick" : ""
+                    }`}
+                  >
+                    <img src={ing.icon} alt="" className="ingredients__icon" />
+                    <span className="ingredients__name">{ing.name}</span>
+                  </li>
+                );
+              })}
           </ul>
           <button
             onClick={() => setHidden(false)}
@@ -102,7 +116,7 @@ export const Ingredients = ({ pickIngredients }: Iprops) => {
             <span className="ingredients__rect"></span>
           </button>
         </div>
-        <div hidden={hidden} className="ingredients__top">
+        <div hidden={!mobile && hidden} className="ingredients__top">
           <header className="ingredients__header">
             <h3 className="ingredients__title">Ингредиенты</h3>
             <div className="ingredients__btns">
@@ -126,7 +140,7 @@ export const Ingredients = ({ pickIngredients }: Iprops) => {
                   }}
                   key={ing.name}
                   className={`ingredients__item ${
-                    item[i] === ing.name ? "ingredients__item--pick" : ""
+                    classActive(ing.name) ? "ingredients__item--pick" : ""
                   }`}
                 >
                   <img src={ing.icon} alt="" className="ingredients__icon" />

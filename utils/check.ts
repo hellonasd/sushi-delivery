@@ -54,7 +54,11 @@ export const filterAdditives = (additive: string, rolls: Irolls[]) => {
 export const filterIngredients = (ingredients: string, rolls: Irolls[]) => {
   return rolls.filter((r) => {
     if (ingredients) {
-      if (r.ingredients.toLocaleLowerCase().includes(ingredients)) {
+      if (
+        r.ingredients
+          .toLocaleLowerCase()
+          .includes(ingredients.toLocaleLowerCase())
+      ) {
         return r;
       }
     }
