@@ -30,8 +30,8 @@ export const SushiCard = ({ card }: IsushiCardProps) => {
               <p className="card__new">{card.status?.new}</p>
             )}
           </div>
-
           <img src={card.img} alt="" className="card__img" />
+
           <div className="card__bottom">
             <div className="card__info">
               <img src={card.info?.hot?.icon} alt="" className="card__hot" />

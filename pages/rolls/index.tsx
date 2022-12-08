@@ -13,6 +13,7 @@ import { rollsMock } from "../../mocks/rolls";
 import { Ingredients } from "../../components/Ingredients";
 import { check } from "../../utils/check";
 import { Filters } from "../../components/filters";
+import { FilterMenuBtn } from "../../components/filterMenuBtn";
 
 interface IFilter {
   category: string;
@@ -57,6 +58,10 @@ function Rolls() {
       ...filters,
       ingredients: name,
     });
+  };
+
+  const showMenu = () => {
+    setFilterMenuIsOpen(!filterMenuIsOpen);
   };
 
   React.useEffect(() => {
@@ -108,13 +113,8 @@ function Rolls() {
         )}
 
         <div className="rolls__mobile-btn">
-          <button
-            onClick={() => setFilterMenuIsOpen(!filterMenuIsOpen)}
-            className="rolls__filter-btn"
-          >
-            Фильтры
-          </button>
           <FilterPrice changeFilterPrice={changeFilterPrice} />
+          <FilterMenuBtn isOpenMenu={showMenu} />
         </div>
 
         <Product mocksData={items} showBtn={false} />

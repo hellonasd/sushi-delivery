@@ -1,4 +1,5 @@
 import React from "react";
+import { FilterMenuBtn } from "./filterMenuBtn";
 
 interface Iingredinets {
   icon: string;
@@ -84,6 +85,10 @@ export const Ingredients = ({ pickIngredients, mobile, ingredien }: Iprops) => {
     }
   };
 
+  const showMenuIngredients = () => {
+    setHidden(!hidden);
+  };
+
   console.log("ingredien", ingredien);
   return (
     <div className="ingredients">
@@ -108,13 +113,13 @@ export const Ingredients = ({ pickIngredients, mobile, ingredien }: Iprops) => {
                 );
               })}
           </ul>
-          <button
+          {/* <button
             onClick={() => setHidden(false)}
             className="ingredients__open-menu"
           >
-            <span className="ingredients__btn-name">Фильтры</span>
             <span className="ingredients__rect"></span>
-          </button>
+          </button> */}
+          <FilterMenuBtn isOpenMenu={showMenuIngredients} />
         </div>
         <div hidden={!mobile && hidden} className="ingredients__top">
           <header className="ingredients__header">
